@@ -12,4 +12,4 @@ mongoose.connect(`mongodb+srv://{$process.env.USERDB}:{&process.env.PASSDB}@thia
 const app = express();
 app.use(express.json());
 app.use(login);
-app.listen(3030, () => console.log("http://localhost:3030"));
+app.listen(process.env.USERDB, () => console.log("http://localhost:3030"));

@@ -10,7 +10,6 @@ export default function Login( { onSubmit, onNewUser}) {
       onNewUser("cadastrar");
     };
   };
-
   return ( 
     <div className="container">
       <div  className="center card-panel green darken-1">

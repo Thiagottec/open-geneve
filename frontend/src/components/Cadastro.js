@@ -7,4 +7,4 @@ export default function Cadastro() {
       <h3>cadastro</h3>
     </div>  
   );
-}
+};
