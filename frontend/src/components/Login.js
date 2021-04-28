@@ -16,11 +16,11 @@ export default function Login( { onSubmit, onNewUser}) {
       <div  className="center card-panel green darken-1">
       <h3 style={styles.title}>Open Genve Login</h3>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
+      <div className="row">
+        <div className="input-field col s12">
           <input id="email" class="validate" type="email" value={email} placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <div class="input-field col s12">
+        <div className="input-field col s12">
           <input className="" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         </div>
       </div>
