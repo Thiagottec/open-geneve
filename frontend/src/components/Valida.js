@@ -1,3 +1,6 @@
+import bcrypt from 'bcrypt-nodejs';
+require('dotenv').config();
+
 function validaEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -34,7 +37,10 @@ function validaEndereco(endereco) {
 }
 
 function passwordToHash(password) {
-    return password;
+    const salt = bcrypt.genSaltSync(process.env.SALT);
+    const hash = bcrypt.hashSync(password, salt);
+    console.log(process.env.SALT);
+    return hash;
 
 }
 

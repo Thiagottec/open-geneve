@@ -18,8 +18,7 @@ export default function App() {
     console.log(status);
     setloginStatus(status);
   }
-
-    return (
+        return (
       <div>
        {loginStatus === false && <Login 
                                     onSubmit={handleSubmit} 

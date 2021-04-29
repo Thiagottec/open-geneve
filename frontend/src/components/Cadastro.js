@@ -21,7 +21,7 @@ const handleActionClick = (event) =>{
     const enderecoValid = validaEndereco(endereco);
     const passwordHash = passwordToHash(senha);
     if (emailValid && nomeValid && celularValid && enderecoValid && passwordHash){
-
+      console.log(passwordHash); 
     }
   } else {
     onSubmit("voltar");
@@ -77,7 +77,7 @@ const handleActionClick = (event) =>{
           </div>
           <div className="input-field col s6">
             <input placeholder="Número Celular - (XX) XXXXX-XXXX"
-                  id="phone" 
+                  id="celphone" 
                   type="text" 
                   className="validate" 
                   value={celular} 
