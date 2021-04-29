@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { login } from './apiLogin.js'
+import { login } from './apiLogin.js.js'
 
 require('dotenv').config();
 
-mongoose.connect(`mongodb+srv://{$process.env.USERDB}:{&process.env.PASSDB}@thiagottec.uzc71.mongodb.net/ThiagoTTEC?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://openGeneve:AB9W6YH1fv8aPsfF@thiagottec.uzc71.mongodb.net/openGeneve?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
