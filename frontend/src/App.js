@@ -3,7 +3,7 @@ import Cadastro from './components/Cadastro.js';
 import Login from './components/Login.js';
 
 export default function App() {
-  const [loginStatus, setloginStatus] = useState("");
+  const [loginStatus, setloginStatus] = useState(false);
 
   useEffect(() => { 
     setloginStatus(false);

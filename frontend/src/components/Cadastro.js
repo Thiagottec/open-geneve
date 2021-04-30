@@ -1,5 +1,8 @@
+import { toast } from 'materialize-css';
 import React, { useState, useEffect } from 'react';
 import {validaEmail, validaNome, validaCelular, validaEndereco, passwordToHash} from './Valida.js'
+import {apiNewUser} from "../api/api.js"
+
 
 export default function Cadastro({ onSubmit }) {
   const [email, setEmail] = useState("");
@@ -8,11 +11,12 @@ export default function Cadastro({ onSubmit }) {
   const [endereco, setEndereco] = useState("");
   const [celular, setCelular] = useState("");
   const [senha, setSenha] = useState("");
+  const [backhand, setBackhand] = useState("destro");
+  const [forehand, setForehand] = useState("2mãos");
   
   useEffect(() => { 
-
+    
   },[]);
-
 const handleActionClick = (event) =>{
   if (event.target.id === "criar"){
     const emailValid = (validaEmail(email));
@@ -21,7 +25,19 @@ const handleActionClick = (event) =>{
     const enderecoValid = validaEndereco(endereco);
     const passwordHash = passwordToHash(senha);
     if (emailValid && nomeValid && celularValid && enderecoValid && passwordHash){
-      console.log(passwordHash); 
+      const dadosUser = {
+          "email" : email,
+          "primeiroNome": primeiroNome,
+          "ultimoNome" : ultimoNome,
+          "celular" : celular,
+          "endereco" : endereco,
+          "senha" : passwordHash,
+          "backhand" : backhand,
+          "forehand" : forehand
+      };
+      apiNewUser(dadosUser);
+    } else {
+      toast({html: 'Todos os campos são obrigatórios'});
     }
   } else {
     onSubmit("voltar");
@@ -34,7 +50,6 @@ const handleActionClick = (event) =>{
         <div  className="center card-panel green darken-1">
           <h6 style={styles.title}>Cadastro novo Jogador</h6>
         </div>
-      <form className="col s12">
         <div className="row">
           <div className="input-field col s6">
             <input placeholder="Primeiro Nome"
@@ -97,10 +112,57 @@ const handleActionClick = (event) =>{
           </div>
         </div>
         <div className="container">
+            <div className="row">
+              <div className="col s12 m6">
+                <h6 className="flow-text">Forehand</h6>
+                  <p>
+                    <label>
+                      <input className="with-gap" 
+                              type="radio" 
+                              name="forehand" 
+                              value="destro"
+                              onChange={() => setForehand("destor")}
+                              checked/> <span>Destro</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input className="with-gap" 
+                              type="radio" 
+                              name="forehand" 
+                              value="esquerda"
+                              onChange={() => setForehand("esquerda")}/> <span>Canhoto</span>
+                    </label>
+                  </p>
+                </div>
+                <div className="col s12 m6">
+                  <h6 className="flow-text">Backhand</h6>
+                  <p>
+                    <label>
+                      <input className="with-gap" 
+                             type="radio" 
+                             name="backhand" 
+                             onClick={() => setBackhand("1mao")}
+                             value="umaMao" /> <span>Uma Mão</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input className="with-gap" 
+                             type="radio" 
+                             name="backhand" 
+                             value="duasMaos" 
+                             onClick={() => setBackhand("2maos")}
+                             checked/> <span>Duas mãos</span>
+                    </label>
+                  </p>
+                </div>
+            </div>  
+          </div>
+        <div className="container">
           <div id="criar" className="waves-effect green darken-1 btn left"  onClick={handleActionClick}>Criar</div>
           <div id="voltar" className="waves-effect green darken-1 btn right" onClick={handleActionClick}>Voltar</div>
         </div>
-      </form>
     </div>
   </div>
        
@@ -108,11 +170,9 @@ const handleActionClick = (event) =>{
 };
 
 const styles = {
-
   title: {
     fontSize: '1.6rem',
     fontWeight: 'bold',
     color : 'white',
-  },
-
+  }
 };
