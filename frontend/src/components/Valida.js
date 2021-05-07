@@ -39,7 +39,6 @@ function validaEndereco(endereco) {
 function passwordToHash(password) {
     const salt = bcrypt.genSaltSync(process.env.SALT);
     const hash = bcrypt.hashSync(password, salt);
-    console.log(process.env.SALT);
     return hash;
 
 }

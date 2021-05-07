@@ -1,8 +1,7 @@
 import { toast } from 'materialize-css';
 import React, { useState, useEffect } from 'react';
 import {validaEmail, validaNome, validaCelular, validaEndereco, passwordToHash} from './Valida.js'
-import {apiNewUser} from "../api/api.js"
-
+import { apiNewPlayer } from '../api/api.js';
 
 export default function Cadastro({ onSubmit }) {
   const [email, setEmail] = useState("");
@@ -35,7 +34,9 @@ const handleActionClick = (event) =>{
           "backhand" : backhand,
           "forehand" : forehand
       };
-      apiNewUser(dadosUser);
+      apiNewPlayer(dadosUser);
+      toast({html: `Jogador Cadastrado, bem vindo ${primeiroNome}`});
+      onSubmit("voltar");  
     } else {
       toast({html: 'Todos os campos são obrigatórios'});
     }

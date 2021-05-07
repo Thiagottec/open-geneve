@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { openRoutes } from "./routes/Routes.js";
+import { openRoutes } from './routes/Routes.js';
 
-mongoose.connect("mongodb+srv://openGeneve:AB9W6YH1fv8aPsfF@opengeneve.uzc71.mongodb.net/openGeneve?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://thiago_ttec:thiago_ttec071@cluster0.uzc71.mongodb.net/openGeneve?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(
