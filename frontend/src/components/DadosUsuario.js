@@ -4,9 +4,6 @@ import React from 'react';
 export default function DadosUsuario(DadosUsuario = {}) {
     const { email, primeiroNome, ultimoNome,celular,
          endereco, backhand, forehand } = DadosUsuario.DadosUsuario;
-console.log(email, primeiroNome, ultimoNome,celular,
-  endereco, forehand);
-
     return ( 
       <div>
         <div  className="center green darken-1">
@@ -17,7 +14,6 @@ console.log(email, primeiroNome, ultimoNome,celular,
             <input placeholder="Primeiro Nome"
                   id="primeiroNome"
                   type="text"
-                  className="validate"
                   value={primeiroNome} 
                   readOnly/>
           </div>
@@ -25,7 +21,6 @@ console.log(email, primeiroNome, ultimoNome,celular,
             <input placeholder="Sobrenome" 
                   id="ultimoNome" 
                   type="text" 
-                  className="validate" 
                   value={ultimoNome}
                   readOnly/>
           </div>
@@ -53,26 +48,15 @@ console.log(email, primeiroNome, ultimoNome,celular,
             <input placeholder="Número Celular - (XX) XXXXX-XXXX"
                   id="celphone" 
                   type="text" 
-                  className="validate" 
                   value={celular}
                   readOnly/>
           </div>
-          <div className="input-field col s6">
-            <input placeholder="Número Celular - (XX) XXXXX-XXXX"
-                  id="celphone" 
-                  type="text" 
-                  className="validate" 
-                  value={celular}
-                  readOnly/>
-          </div>
-
           <div className="input-field col s6">
             <input placeholder="Batida"
                    id="batida" 
                    type="text" 
-                   className="validate" 
-                  value={`${forehand} e ${backhand}`}
-                  readOnly/>
+                   value={`${forehand} e ${backhand}`}
+                   readOnly/>
           </div>
         </div> 
       </div>

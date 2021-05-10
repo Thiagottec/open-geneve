@@ -1,3 +1,4 @@
+import { toast } from 'materialize-css';
 import React, { useState, useEffect } from 'react';
 import Cadastro from './components/Cadastro.js';
 import Login from './components/Login.js';
@@ -16,10 +17,14 @@ export default function App() {
   }
   
   const handleLoggin = (email) => {
-    setloginLoginEmail(email);
-    setloginStatus("logged");
-    console.log(email, loginStatus);
-  }
+    console.log(email);
+    if (email !== "") {
+      setloginLoginEmail(email);
+      setloginStatus("logged");
+    } else {
+      toast({html: 'Todos os campos são obrigatórios'});
+    }
+  };
 
         return (
       <div>

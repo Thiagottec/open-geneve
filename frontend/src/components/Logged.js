@@ -3,7 +3,7 @@ import { apiGetPlayerData } from "../api/api";
 import DadosUsuario from "./DadosUsuario";
 import Url from "./Url";
 
-export default function Logged( { onSubmit, playerId}) {
+export default function Logged({ onSubmit, playerId}) {
   const [loggedPlayer, setLoggedPlayer] = useState({});
   const [linkDadosUsu, setLinkDadosUsu] = useState("false");
   const [linkJogos, setLinkJogos] = useState("false");
@@ -13,14 +13,14 @@ export default function Logged( { onSubmit, playerId}) {
   useEffect(() => { 
     const getPlayerData = async (inPlayerId) => {
       const playerData = await apiGetPlayerData(inPlayerId);
-        setLoggedPlayer(playerData[0]);
+      setLoggedPlayer(playerData[0]);
     };
     getPlayerData(playerId);
   },[]);
 
   const handleActionClick = (event) =>{
     console.log(event);
-    if (event.target.id === "voltar"){
+    if (event.target.id === "sair"){
     onSubmit("voltar");
     } else {
       console.log(event);
@@ -54,6 +54,7 @@ export default function Logged( { onSubmit, playerId}) {
     <div className="container">
       <div  className="center card-panel green darken-1">
         <h3 style={styles.title}>{`Bem vindo ${loggedPlayer.primeiroNome}`}</h3>
+        <div id="sair" className="waves-effect green darken-1 btn left" onClick={handleActionClick}>sair</div>
       </div>
       <div className="row">
         <div className="col s12 m4 l3">
@@ -102,8 +103,7 @@ export default function Logged( { onSubmit, playerId}) {
           {linkCompeticoes === true && 4}
         </div>
       </div>
-        <div id="criar" className="waves-effect green darken-1 btn left"  onClick={handleActionClick}>Criar</div>
-        <div id="voltar" className="waves-effect green darken-1 btn right" onClick={handleActionClick}>Voltar</div>
+
     </div>
   );
 }
