@@ -5,11 +5,12 @@ import { newPlayerModel } from '../models/schema.js';
 const app = express();
 app.use(express.json());
 
-app.get('/logged/:email', (req, res) => {
-    console.log(req.params.email);
-    res.send(req.params.email);
-})
-
+app.get('/logged/:email', async(req, res) => {
+    const plaeyrData = await newPlayerModel.find({
+        email: req.params.email
+    })
+    res.send(plaeyrData);
+});
 app.post('/NewPlayer', async(req, res) => {
     try {
         const newPlayer = new newPlayerModel(req.body);

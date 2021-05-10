@@ -46,7 +46,7 @@ const newPassWorldSchema = mongoose.Schema({
     }
 });
 
-const newPlayerModel = mongoose.model('openGenevePlayer', newPlayerSchema);
-const newPassworld = mongoose.model('openGenevePassword', newPassWorldSchema);
+const newPlayerModel = mongoose.model('opengeneveplayers', newPlayerSchema);
+//const newPassworld = mongoose.model('opengeneveplayer', newPassWorldSchema);
 
-export { newPlayerModel, newPassworld };
+export { newPlayerModel };

@@ -18,7 +18,7 @@ export default function Cadastro({ onSubmit }) {
   },[]);
 const handleActionClick = (event) =>{
   if (event.target.id === "criar"){
-    const emailValid = (validaEmail(email));
+    const emailValid = validaEmail(email);
     const nomeValid = validaNome(primeiroNome, ultimoNome);
     const celularValid = validaCelular(celular);
     const enderecoValid = validaEndereco(endereco);
@@ -131,7 +131,7 @@ const handleActionClick = (event) =>{
                       <input className="with-gap" 
                               type="radio" 
                               name="forehand" 
-                              value="esquerda"
+                              value="canhoto"
                               onChange={() => setForehand("esquerda")}/> <span>Canhoto</span>
                     </label>
                   </p>

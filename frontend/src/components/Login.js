@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-export default function Login( { onSubmit, onNewUser}) {
+export default function Login( { onSubmit, onUserEmail}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
-  const handleActionClick = (event) => {
-    if (event.target.id === 'login') {
-      onSubmit("logar");
-    } else { 
-      onNewUser("cadastrar");
+  const handleActionCadastrar = (event) => {
+    if (event.target.id === 'cadastro') {
+      onSubmit("cadastrar");
     };
   };
     
+  const handleActionLogin = (event) => {
+    if (event.target.id === 'login') {
+      onUserEmail(email);
+    };
+  };
+
   return ( 
     <div className="container">
       <div  className="center card-panel green darken-1">
@@ -25,13 +29,12 @@ export default function Login( { onSubmit, onNewUser}) {
         </div>
       </div>
       <div className="container">
-        <div id="login" className="waves-effect green darken-1 btn left"  onClick={handleActionClick}>Login</div>
-        <div id="cadastro" className="waves-effect green darken-1 btn right" onClick={handleActionClick}>Cadastrar</div>
+        <div id="login" className="waves-effect green darken-1 btn left"  onClick={handleActionLogin}>Login</div>
+        <div id="cadastro" className="waves-effect green darken-1 btn right" onClick={handleActionCadastrar}>Cadastrar</div>
       </div>
     </div>  
   );
 }
-
 const styles = {
 
   title: {

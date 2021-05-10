@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Cadastro from './components/Cadastro.js';
 import Login from './components/Login.js';
+import Logged from './components/Logged.js';
 
 export default function App() {
   const [loginStatus, setloginStatus] = useState(false);
+  const [loginEmail, setloginLoginEmail] = useState("");
 
   useEffect(() => { 
-    setloginStatus(false);
   },[]);
   
+
   const handleSubmit = (status) => {
-    console.log(status);
     setloginStatus(status);
+  }
+  
+  const handleLoggin = (email) => {
+    setloginLoginEmail(email);
+    setloginStatus("logged");
+    console.log(email, loginStatus);
   }
 
-  const handleNewUser = (status) => {
-    console.log(status);
-    setloginStatus(status);
-  }
         return (
       <div>
        {loginStatus === false && <Login 
                                     onSubmit={handleSubmit} 
-                                    onNewUser={handleNewUser}/> }
+                                    onUserEmail={handleLoggin}/> }
         {loginStatus === "cadastrar" && <Cadastro 
                                             onSubmit={handleSubmit} />}
-        {loginStatus === "logar" && <Login 
-                                        onSubmit={handleSubmit} 
-                                        onNewUser={handleNewUser}/> }
+        {loginStatus === "logged" && <Logged 
+                                          playerId={loginEmail} 
+                                          onSubmit={handleSubmit}/> }
         {loginStatus === "voltar" && <App />} 
       </div>
         );
