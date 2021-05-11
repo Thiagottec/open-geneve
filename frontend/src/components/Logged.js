@@ -98,9 +98,9 @@ export default function Logged({ onSubmit, playerId}) {
         </div>
         <div className="col s12 m8 l9">
           {linkDadosUsu === true && <DadosUsuario DadosUsuario={loggedPlayer} />}
-          {linkJogos === true && 2}
-          {linkClassific === true && 3}
-          {linkCompeticoes === true && 4}
+          {linkJogos === true && "Clicou em Jogos"}
+          {linkClassific === true && "Clicou em Classificação"}
+          {linkCompeticoes === true && "Clicou em Competições"}
         </div>
       </div>
 
