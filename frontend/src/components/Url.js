@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Link({ classNameA, classNameI, iconName, linkName, handleChange = null }) {
+export default function Url({ classNameA, classNameI, iconName, linkName, handleChange = null }) {
     const onChange = (event) => {
       event.preventDefault();
         if (handleChange) {

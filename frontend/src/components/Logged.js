@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiGetPlayerData } from "../api/api";
 import DadosUsuario from "./DadosUsuario";
+import Jogos from "./Jogos";
 import Url from "./Url";
 
 export default function Logged({ onSubmit, playerId}) {
@@ -98,7 +99,9 @@ export default function Logged({ onSubmit, playerId}) {
         </div>
         <div className="col s12 m8 l9">
           {linkDadosUsu === true && <DadosUsuario DadosUsuario={loggedPlayer} />}
-          {linkJogos === true && "Clicou em Jogos"}
+          {linkJogos === true && <Jogos email={loggedPlayer.email} 
+                                        primeiroNome={loggedPlayer.primeiroNome} 
+                                        ultimoNome={loggedPlayer.ultimoNome}/>}
           {linkClassific === true && "Clicou em Classificação"}
           {linkCompeticoes === true && "Clicou em Competições"}
         </div>
