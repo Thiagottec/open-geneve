@@ -35,7 +35,7 @@ const newPlayerSchema = mongoose.Schema({
     }
 });
 
-const newPassWorldSchema = mongoose.Schema({
+const newPassworldSchema = mongoose.Schema({
     "email": {
         type: String,
         require: true
@@ -46,7 +46,19 @@ const newPassWorldSchema = mongoose.Schema({
     }
 });
 
-const newPlayerModel = mongoose.model('opengeneveplayers', newPlayerSchema);
-//const newPassworld = mongoose.model('opengeneveplayer', newPassWorldSchema);
+const newOpensSchema = mongoose.Schema({
+    "email": {
+        type: String,
+        require: true
+    },
+    "ativo": {
+        type: Boolean,
+        require: true
+    }
+});
 
-export { newPlayerModel };
+const newPlayerModel = mongoose.model('opengeneveplayers', newPlayerSchema);
+const newPassworldModel = mongoose.model('users', newPassworldSchema);
+const newOpensModel = mongoose.model('opens', newOpensSchema);
+
+export { newPlayerModel, newPassworldModel, newOpensModel };

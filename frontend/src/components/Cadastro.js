@@ -1,7 +1,7 @@
 import { toast } from 'materialize-css';
 import React, { useState, useEffect } from 'react';
 import {validaEmail, validaNome, validaCelular, validaEndereco, passwordToHash} from './Valida.js'
-import { apiNewPlayer } from '../api/api.js';
+import { apiNewPlayer, apiNewPassword } from '../api/api.js';
 
 export default function Cadastro({ onSubmit }) {
   const [email, setEmail] = useState("");
@@ -10,13 +10,13 @@ export default function Cadastro({ onSubmit }) {
   const [endereco, setEndereco] = useState("");
   const [celular, setCelular] = useState("");
   const [senha, setSenha] = useState("");
-  const [backhand, setBackhand] = useState("destro");
-  const [forehand, setForehand] = useState("2mãos");
+  const [backhand, setBackhand] = useState("2mãos");
+  const [forehand, setForehand] = useState("destro");
   
   useEffect(() => { 
     
   },[]);
-const handleActionClick = (event) =>{
+  const handleActionClick = (event) =>{
   if (event.target.id === "criar"){
     const emailValid = validaEmail(email);
     const nomeValid = validaNome(primeiroNome, ultimoNome);
@@ -30,11 +30,16 @@ const handleActionClick = (event) =>{
           "ultimoNome" : ultimoNome,
           "celular" : celular,
           "endereco" : endereco,
-          "senha" : passwordHash,
           "backhand" : backhand,
           "forehand" : forehand
       };
+      console.log(dadosUser);
       apiNewPlayer(dadosUser);
+      const dadosSenha = {
+          "email" : email, 
+          "senha" : passwordHash 
+        };
+        apiNewPassword(dadosSenha);
       toast({html: `Jogador Cadastrado, bem vindo ${primeiroNome}`});
       onSubmit("voltar");  
     } else {
@@ -45,6 +50,12 @@ const handleActionClick = (event) =>{
   };
 }
 
+const radioForehand = (e) =>{
+  setForehand(e.target.id);
+}
+const radioBackhand = (e) =>{
+  setBackhand(e.target.id);
+}
   return ( 
     <div className="row">
       <div className="container">
@@ -119,41 +130,49 @@ const handleActionClick = (event) =>{
                   <p>
                     <label>
                       <input className="with-gap" 
+                              id="destro"
                               type="radio" 
                               name="forehand" 
                               value="destro"
-                              onChange={() => setForehand("destor")}
-                              checked/> <span>Destro</span>
+                              onChange={radioForehand}
+                              //onChange={(e) => setForehand(e.target.id)}
+                              checked /> <span>Destro</span>
                     </label>
                   </p>
                   <p>
                     <label>
                       <input className="with-gap" 
+                              id="canhoto"
                               type="radio" 
                               name="forehand" 
                               value="canhoto"
-                              onChange={() => setForehand("esquerda")}/> <span>Canhoto</span>
+                              //onChange={(e) => setForehand(e.target.id)}
+                              onChange={radioForehand}
+                              /> <span>Canhoto</span>
                     </label>
                   </p>
                 </div>
                 <div className="col s12 m6">
                   <h6 className="flow-text">Backhand</h6>
+                  
                   <p>
                     <label>
                       <input className="with-gap" 
+                             id="1mao"
                              type="radio" 
                              name="backhand" 
-                             onClick={() => setBackhand("1mao")}
+                             onClick={radioBackhand}
                              value="umaMao" /> <span>Uma Mão</span>
                     </label>
                   </p>
                   <p>
                     <label>
                       <input className="with-gap" 
+                             id="2maos"
                              type="radio" 
                              name="backhand" 
                              value="duasMaos" 
-                             onClick={() => setBackhand("2maos")}
+                             onClick={radioBackhand}
                              checked/> <span>Duas mãos</span>
                     </label>
                   </p>

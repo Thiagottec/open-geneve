@@ -10,14 +10,12 @@ export default function App() {
 
   useEffect(() => { 
   },[]);
-  
 
   const handleSubmit = (status) => {
     setloginStatus(status);
   }
-  
+
   const handleLoggin = (email) => {
-    console.log(email);
     if (email !== "") {
       setloginLoginEmail(email);
       setloginStatus("logged");
@@ -25,18 +23,17 @@ export default function App() {
       toast({html: 'Todos os campos são obrigatórios'});
     }
   };
-
         return (
-      <div>
-       {loginStatus === false && <Login 
-                                    onSubmit={handleSubmit} 
-                                    onUserEmail={handleLoggin}/> }
-        {loginStatus === "cadastrar" && <Cadastro 
-                                            onSubmit={handleSubmit} />}
-        {loginStatus === "logged" && <Logged 
-                                          playerId={loginEmail} 
-                                          onSubmit={handleSubmit}/> }
-        {loginStatus === "voltar" && <App />} 
-      </div>
+                  <div>
+                  {loginStatus === false && <Login 
+                                                onSubmit={handleSubmit} 
+                                                onUserEmail={handleLoggin}/> }
+                    {loginStatus === "cadastrar" && <Cadastro 
+                                                        onSubmit={handleSubmit} />}
+                    {loginStatus === "logged" && <Logged 
+                                                      playerId={loginEmail} 
+                                                      onSubmit={handleSubmit}/> }
+                    {loginStatus === "voltar" && <App />} 
+                  </div>
         );
 }
