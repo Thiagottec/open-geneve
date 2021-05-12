@@ -11,7 +11,7 @@ export default function Logged({ onSubmit, playerId}) {
   const [linkClassific, setLinkClassific] = useState("false");
   const [linkCompeticoes, setLinkCompeticoes] = useState("false");
 
-  useEffect(() => { 
+  useEffect((playerId) => { 
     const getPlayerData = async (inPlayerId) => {
       const playerData = await apiGetPlayerData(inPlayerId);
       setLoggedPlayer(playerData[0]);
@@ -20,7 +20,6 @@ export default function Logged({ onSubmit, playerId}) {
   },[]);
 
   const handleActionClick = (event) =>{
-    console.log(event);
     if (event.target.id === "sair"){
     onSubmit("voltar");
     } else {
